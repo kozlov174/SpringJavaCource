@@ -1,11 +1,10 @@
 package com.example.labwork2.model;
 
-import lombok.Data;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
-import jakarta.validation.constraints.NotBlank;
-
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
@@ -14,14 +13,27 @@ import jakarta.validation.constraints.NotBlank;
 public class Request {
 
     @NotBlank
+    @Size(max = 32)
     private String uid;
 
+    @NotBlank
+    @Size(max = 32)
     private String operationUid;
+
     private String systemName;
+
+    @NotBlank
     private String systemTime;
+
     private String source;
+
+    @Min(1)
+    @Max(100000)
     private int communicationId;
-    private int templateId;
-    private int productCode;
-    private int smsCode;
+
+    private Integer templateId;
+
+    private Integer productCode;
+
+    private Integer smsCode;
 }
